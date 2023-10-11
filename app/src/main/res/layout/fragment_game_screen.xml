@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".GameScreenFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/player_name"
+                android:textSize="30sp"
+                android:layout_margin="5dp"
+                />
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="30sp"
+                android:layout_margin="5dp"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="@string/enter_your_guess"
+            android:textSize="35sp"
+            android:layout_margin="10dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_gravity="bottom"
+                android:src="@android:drawable/presence_busy" />
+            
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="5"
+                android:layout_gravity="bottom"
+                />
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_gravity="bottom"
+                android:src="@android:drawable/ic_input_add" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/square_button"
+                android:text="@string/ok"
+                android:textSize="60sp"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</layout>
