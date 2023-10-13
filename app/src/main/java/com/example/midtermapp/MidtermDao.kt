@@ -13,8 +13,8 @@ interface MidtermDao {
     suspend fun insert(score: Score)
     @Delete
     suspend fun delete(score: Score)
-    @Query("SELECT * FROM score_data WHERE id = :id")
-    suspend fun get(id: Long): LiveData<Score>
+    @Query("SELECT * FROM score_data WHERE id = :key")
+    fun get(key: Long): LiveData<Score>
     @Query("SELECT * FROM score_data ORDER BY id DESC")
-    suspend fun getAll(): LiveData<List<Score>>
+    fun getAll(): LiveData<List<Score>>
 }

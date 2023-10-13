@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".GameFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,6 +11,7 @@
         >
 
         <fragment
+            android:id="@+id/gameFrag"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -17,6 +19,7 @@
             android:name="com.example.midtermapp.GameScreenFragment"
             />
         <fragment
+            android:id="@+id/attemptsFrag"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"

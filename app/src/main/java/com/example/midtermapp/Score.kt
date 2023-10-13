@@ -11,5 +11,5 @@ data class Score(
     @ColumnInfo(name = "player")
     var player: String = "",
     @ColumnInfo(name = "score")
-    var score: Long = 0L
+    var score: Int = 0
 )

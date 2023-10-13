@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.midtermapp.databinding.ScoreBinding
 
 class ScoresAdapter(
-    val clickListener: (id: Long) -> Unit,
     val deleteClickListener: (id: Long) -> Unit
 ) : ListAdapter<Score, ScoresAdapter.ScoresViewHolder>(ScoresDiffCallBack()){
 
@@ -18,7 +17,7 @@ class ScoresAdapter(
 
     override fun onBindViewHolder(holder: ScoresViewHolder, position: Int){
         val score = getItem(position)
-        holder.bind(score, clickListener, deleteClickListener)
+        holder.bind(score, deleteClickListener)
     }
 
     class ScoresViewHolder(val binding: ScoreBinding) : RecyclerView.ViewHolder(binding.root){
@@ -30,14 +29,11 @@ class ScoresAdapter(
                 return ScoresViewHolder(binding)
             }
         }
-
         fun bind(
             item: Score,
-            clickListener: (id: Long) -> Unit,
             deleteClickListener: (id: Long) -> Unit
         ) {
             binding.score = item
-            binding.root.setOnClickListener {clickListener(item.id)}
             binding.imageButton.setOnClickListener{ deleteClickListener(item.id)}
         }
     }

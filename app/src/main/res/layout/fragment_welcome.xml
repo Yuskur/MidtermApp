@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".WelcomeFragment">
 
+    <data>
+        <variable
+            name="welcome"
+            type="com.example.midtermapp.WelcomeViewModel"/>
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,7 +16,7 @@
         >
 
         <TextView
-            android:id="@+id/welcome"
+            android:id="@+id/welcomeToGame"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -27,7 +33,8 @@
             android:layout_margin="10dp"
             android:background="@drawable/square_button"
             android:text="@string/play_game"
-            android:textSize="45sp"/>
+            android:textSize="45sp"
+            android:onClick="@{() -> welcome.playBtnClicked()}"/>
         <Button
             android:id="@+id/viewHighScores"
             android:layout_width="match_parent"
@@ -36,12 +43,8 @@
             android:layout_margin="10dp"
             android:background="@drawable/square_button"
             android:text="@string/view_high_scores"
-            android:textSize="30sp"/>
-
-
-
-
-
+            android:textSize="30sp"
+            android:onClick="@{() -> welcome.viewScoresClicked()}"/>
 
     </LinearLayout>
 

@@ -16,15 +16,36 @@
         <action
             android:id="@+id/action_welcomeFragment_to_highScoresFragment"
             app:destination="@id/highScoresFragment" />
+        <argument
+            android:name="player"
+            app:argType="string" />
+        <argument
+            android:name="score"
+            app:argType="integer" />
+
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.example.midtermapp.GameFragment"
         android:label="fragment_game"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_gameFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/highScoresFragment"
         android:name="com.example.midtermapp.HighScoresFragment"
         android:label="fragment_high_scores"
-        tools:layout="@layout/fragment_high_scores" />
+        tools:layout="@layout/fragment_high_scores" >
+        <action
+            android:id="@+id/action_highScoresFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+    <argument
+        android:name="player"
+        android:defaultValue="no name" />
+    <argument
+        android:name="score"
+        android:defaultValue="0"/>
 </navigation>
