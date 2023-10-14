@@ -49,10 +49,18 @@ class HighScoresFragment : Fragment() {
         //adds the changes of the scores to the recycler view
         viewModel.scores.observe(viewLifecycleOwner, Observer {
             it?.let {
+                Log.d("Scores Observer", "Entered Not Null")
                 adapter.submitList(it)
             }
+            if(it.isEmpty()){
+                viewModel.enableVisibility()
+                Log.d("State of visibility: enabled", "${viewModel.textVisibility.get()} and ${viewModel.recyclerViewVisibility.get()}")
+            }
+            else{
+                viewModel.disableVisibility()
+                Log.d("State of visibility: disabled", "${viewModel.textVisibility.get()} and ${viewModel.recyclerViewVisibility.get()}")
+            }
         })
-
         return view
     }
 

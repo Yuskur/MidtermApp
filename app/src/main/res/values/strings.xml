@@ -8,4 +8,6 @@
     <string name="player_name">Player Name:</string>
     <string name="enter_your_guess">Enter your guess:</string>
     <string name="ok">OK</string>
+    <string name="no_attempts_so_far">No Attempts so far</string>
+    <string name="no_high_scores_yet">No high scores yet.</string>
 </resources>

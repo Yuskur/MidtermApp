@@ -8,6 +8,7 @@
         <variable
             name="highScore"
             type="com.example.midtermapp.HighScoresViewModel" />
+        <import type="android.view.View" />
     </data>
 
     <LinearLayout
@@ -16,12 +17,27 @@
         android:orientation="vertical"
         >
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="No high scores yet."
+            android:gravity="start|top"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="20dp"
+            android:textSize="30sp"
+            android:visibility="@{highScore.textVisibility ? View.VISIBLE : View.GONE}"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             app:spanCount="2"
+            android:visibility="@{highScore.recyclerViewVisibility ? View.VISIBLE : View.GONE}"
             />
+
     </LinearLayout>
 
 </layout>

@@ -1,5 +1,6 @@
 package com.example.midtermapp
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -45,11 +46,17 @@ class GameScreenFragment : Fragment() {
                 if(check){
                     viewModel.onGuessedRight()
                 } else {
-                    if(viewModel.guess.toInt() < viewModel.randomNumber){
-                        //Also remember to add some sounds
+                    //Make an object of the media player to play the sound
+                    val mediaPlayer : MediaPlayer
+                    if(viewModel.guess.get()!!.toInt() < viewModel.randomNumber){
+                        //Plays wrong sound if the user gets it wrong
+                        mediaPlayer = MediaPlayer.create(context, R.raw.buzz)
+                        mediaPlayer.start()
                         Toast.makeText(requireContext(), "Higher", Toast.LENGTH_LONG).show()
                     } else{
-                        //Also remember to add some sounds
+                        //Plays wrong sound if the user gets it wrong
+                        mediaPlayer = MediaPlayer.create(context, R.raw.buzz)
+                        mediaPlayer.start()
                         Toast.makeText(requireContext(), "Lower", Toast.LENGTH_LONG).show()
                     }
                 }

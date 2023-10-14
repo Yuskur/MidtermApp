@@ -9,8 +9,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //Makes an instance of the shared viewModel
-        val application = application
-        val dao = MidtermDatabase.getDatabase(application).midtermDao
-        val viewModelFactory = GameViewModelFactory(dao)
     }
 }

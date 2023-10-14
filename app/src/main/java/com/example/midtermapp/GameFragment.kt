@@ -32,7 +32,7 @@ class GameFragment : Fragment() {
         val viewModel = ViewModelProvider(this, viewModelFactory)[GameViewModel::class.java]
 
         //Generates the random number
-        viewModel.randomNumber = Random.nextInt(1, 100 + 1)
+        viewModel.randomNumber = Random.nextInt(1, 100)
         binding.lifecycleOwner = viewLifecycleOwner
 
         /*

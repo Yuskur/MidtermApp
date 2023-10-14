@@ -1,6 +1,7 @@
 package com.example.midtermapp
 
 import android.util.Log
+import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,9 +12,12 @@ class GameViewModel(val dao: MidtermDao) : ViewModel() {
     var name = ""
     var gameScore = 0
     var randomNumber = 0
-    var guess = ""
-    var guessesSoFar = 0
+    var guess = ObservableField<String>()
+    private var guessesSoFar = 0
     var id = 0L
+    private var _text = MutableLiveData("No attempts so far")
+    val text : LiveData<String>
+        get() = _text
 
     private var _guessTaken = MutableLiveData(false)
     val guessTaken : LiveData<Boolean>
@@ -34,24 +38,28 @@ class GameViewModel(val dao: MidtermDao) : ViewModel() {
             id = score.id
         }
     }
-    //
+
     fun okClicked(){
         Log.d("Clicked", "clicking")
         if(name.isNotEmpty()){
             Log.d("RandomNumber", "$randomNumber")
+            gameScore++
             _guessTaken.value = true
+            _text.value = "Attempts so far: $gameScore"
         } else{
             _noName.value = true
         }
     }
     fun checkAns() : Boolean{
-        if(guess.isNotEmpty()) {
-            return if (guess.toInt() == randomNumber) {
-                addScore()
-                true
-            } else {
-                guessesSoFar++
-                false
+        if(guess.get() != null) {
+            if (guess.get()!!.isNotEmpty()) {
+                return if (guess.get()!!.toInt() == randomNumber) {
+                    addScore()
+                    true
+                } else {
+                    guessesSoFar++
+                    false
+                }
             }
         }
         return false
@@ -60,16 +68,20 @@ class GameViewModel(val dao: MidtermDao) : ViewModel() {
         _guessedRight.value = true
     }
     fun inc(){
-        var guessTemp = guess.toInt()
-        guessTemp++
-        guess = guessTemp.toString()
-        Log.d("inc", guess)
+        if(guess.get() != null) {
+            var guessTemp = guess.get()!!.toInt()
+            guessTemp++
+            guess.set(guessTemp.toString())
+            Log.d("inc", guess.get().toString())
+        }
     }
     fun dec(){
-        var guessTemp = guess.toInt()
-        guessTemp--
-        guess = guessTemp.toString()
-        Log.d("inc", guess)
+        if(guess.get() != null) {
+            var guessTemp = guess.get()!!.toInt()
+            guessTemp--
+            guess.set(guessTemp.toString())
+            Log.d("inc", guess.get().toString())
+        }
     }
     fun setBack(){
         _guessTaken.value = false
