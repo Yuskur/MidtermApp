@@ -18,22 +18,27 @@ class GameViewModel(val dao: MidtermDao) : ViewModel() {
     var guess = ObservableField<String>()
     //Stores the number of guesses made so far
     private var guessesSoFar = 0
-    //
-    var id = 0L
+
+    //Text to display the attempts taken so far
     private var _text = MutableLiveData("No attempts so far")
     val text : LiveData<String>
         get() = _text
 
+    //holds the number of guesses taken
     private var _guessTaken = MutableLiveData(false)
     val guessTaken : LiveData<Boolean>
         get() = _guessTaken
 
+    //Determines whether no name has been entered
     private var _noName = MutableLiveData(false)
     val noName : LiveData<Boolean>
         get() = _noName
+    //Determines whether the guess taken was the right one
     private var _guessedRight = MutableLiveData(false)
     val guessedRight : LiveData<Boolean>
         get() = _guessedRight
+
+    //Adds the score to the database
     private fun addScore(){
         viewModelScope.launch {
             val score = Score()
@@ -43,10 +48,13 @@ class GameViewModel(val dao: MidtermDao) : ViewModel() {
         }
     }
 
+    /*
+    When the OK button is clicked it increments the gameScore sets guess taken to true and changes
+    the attempts screen to display the number of attempts so far
+     */
     fun okClicked(){
         Log.d("Clicked", "clicking")
         if(name.isNotEmpty()){
-            Log.d("RandomNumber", "$randomNumber")
             gameScore++
             _guessTaken.value = true
             _text.value = "Attempts so far: $gameScore"
@@ -54,6 +62,11 @@ class GameViewModel(val dao: MidtermDao) : ViewModel() {
             _noName.value = true
         }
     }
+
+    /*
+    Checks where the answer given is right and if not it will inc the guesses taken and return
+    false
+     */
     fun checkAns() : Boolean{
         if(guess.get() != null) {
             if (guess.get()!!.isNotEmpty()) {
@@ -71,6 +84,7 @@ class GameViewModel(val dao: MidtermDao) : ViewModel() {
     fun onGuessedRight(){
         _guessedRight.value = true
     }
+    //Increments the typed number
     fun inc(){
         if(guess.get() != null) {
             var guessTemp = guess.get()!!.toInt()
@@ -79,6 +93,7 @@ class GameViewModel(val dao: MidtermDao) : ViewModel() {
             Log.d("inc", guess.get().toString())
         }
     }
+    //Decrements the typed number
     fun dec(){
         if(guess.get() != null) {
             var guessTemp = guess.get()!!.toInt()
@@ -87,6 +102,7 @@ class GameViewModel(val dao: MidtermDao) : ViewModel() {
             Log.d("inc", guess.get().toString())
         }
     }
+    //sets all values back to their original states
     fun setBack(){
         _guessTaken.value = false
         _noName.value = false

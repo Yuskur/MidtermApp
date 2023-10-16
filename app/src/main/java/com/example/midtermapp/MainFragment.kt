@@ -27,24 +27,21 @@ class MainFragment : Fragment() {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        view.requestFocus()
-
         //make the viewModel for the fragment
-        val application = requireNotNull(this.activity).application
-        val dao = MidtermDatabase.getDatabase(application).midtermDao
         val player = MainFragmentArgs.fromBundle(requireArguments()).player
         val score = MainFragmentArgs.fromBundle(requireArguments()).score
 
+        //If someone has currently played the game then it will display their name with their score
         if(player != "no name"){
             binding.welcomeToGame.text = "${player}: $score \n\n Play Again?"
         }
 
+        //Making an instance of the view model
         viewModel = ViewModelProvider(this)[MainFragmentViewModel::class.java]
+        //data binds the welcome data from the main xml file to handle data accordingly
         binding.welcome = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-
-        //don't know if this will work -------------
         //Takes you to the game screen is play game is clicked
         viewModel.playClicked.observe(viewLifecycleOwner, Observer {
             Log.d("play clicked", "entered")
