@@ -4,13 +4,13 @@
 
 The following midterm app functionality is completed 
 
-[Play Game] This button allows the user to go and play the game 
-[View High Scores] This allows the user to go and view the highest scores of the gamae 
-[Player Name EditText] This allows the user to enter their player name 
-[-] This allows the user to decrement their entered number by one
-[+] This alows the user to increment their entered number by one
-[OK] This allows the user to check their guessed answer 
-[x] This allows the user to delete a high score
+* [Play Game] This button allows the user to go and play the game 
+* [View High Scores] This allows the user to go and view the highest scores of the gamae
+* [Player Name EditText] This allows the user to enter their player name 
+* [-] This allows the user to decrement their entered number by one
+* [+] This alows the user to increment their entered number by one
+* [OK] This allows the user to check their guessed answer 
+* [x] This allows the user to delete a high score
 
 The following extensions are implemented 
 
