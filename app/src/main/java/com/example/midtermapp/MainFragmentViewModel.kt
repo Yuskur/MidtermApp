@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class WelcomeViewModel : ViewModel() {
+class MainFragmentViewModel : ViewModel() {
 
     private var _playClicked = MutableLiveData(false)
     val playClicked : LiveData<Boolean>

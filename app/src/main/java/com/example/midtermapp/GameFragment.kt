@@ -27,7 +27,9 @@ class GameFragment : Fragment() {
         val view = binding.root
 
         val application = requireNotNull(this.activity).application
+        //making an instance of the dao
         val dao = MidtermDatabase.getDatabase(application).midtermDao
+        //making an instance of the GameViewModel
         val viewModelFactory = GameViewModelFactory(dao)
         val viewModel = ViewModelProvider(this, viewModelFactory)[GameViewModel::class.java]
 

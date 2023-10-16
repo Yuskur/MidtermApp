@@ -9,11 +9,16 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 class GameViewModel(val dao: MidtermDao) : ViewModel() {
+    //storing the name and gameScore
     var name = ""
     var gameScore = 0
+    //stores the randomNumber
     var randomNumber = 0
+    //stores the guess the user has entered in the editText view
     var guess = ObservableField<String>()
+    //Stores the number of guesses made so far
     private var guessesSoFar = 0
+    //
     var id = 0L
     private var _text = MutableLiveData("No attempts so far")
     val text : LiveData<String>
@@ -35,7 +40,6 @@ class GameViewModel(val dao: MidtermDao) : ViewModel() {
             score.player = "$name score: "
             score.score = gameScore
             dao.insert(score)
-            id = score.id
         }
     }
 

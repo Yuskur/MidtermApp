@@ -10,13 +10,13 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.midtermapp.databinding.FragmentWelcomeBinding
+import com.example.midtermapp.databinding.FragmentMainBinding
 
-class WelcomeFragment : Fragment() {
+class MainFragment : Fragment() {
 
-    private var _binding : FragmentWelcomeBinding? = null
+    private var _binding : FragmentMainBinding? = null
     val binding get() = _binding!!
-    private lateinit var viewModel : WelcomeViewModel
+    private lateinit var viewModel : MainFragmentViewModel
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +24,7 @@ class WelcomeFragment : Fragment() {
     ): View? {
         Log.d("Welcome Fragment", "Ok we are inside the Welcome Fragment")
         // Inflate the layout for this fragment
-        _binding = FragmentWelcomeBinding.inflate(inflater, container, false)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
         val view = binding.root
 
         view.requestFocus()
@@ -32,14 +32,14 @@ class WelcomeFragment : Fragment() {
         //make the viewModel for the fragment
         val application = requireNotNull(this.activity).application
         val dao = MidtermDatabase.getDatabase(application).midtermDao
-        val player = WelcomeFragmentArgs.fromBundle(requireArguments()).player
-        val score = WelcomeFragmentArgs.fromBundle(requireArguments()).score
+        val player = MainFragmentArgs.fromBundle(requireArguments()).player
+        val score = MainFragmentArgs.fromBundle(requireArguments()).score
 
         if(player != "no name"){
             binding.welcomeToGame.text = "${player}: $score \n\n Play Again?"
         }
 
-        viewModel = ViewModelProvider(this)[WelcomeViewModel::class.java]
+        viewModel = ViewModelProvider(this)[MainFragmentViewModel::class.java]
         binding.welcome = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 

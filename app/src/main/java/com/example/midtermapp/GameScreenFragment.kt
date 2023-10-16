@@ -27,10 +27,16 @@ class GameScreenFragment : Fragment() {
         val view = binding.root
         //add the view of the xml file
         val application = requireNotNull(this.activity).application
+        //making an instance of the dao
         val dao = MidtermDatabase.getDatabase(application).midtermDao
+        /*
+        making an instance of the GameViewModel with requireParentFragment because GameScreenFragment
+        is a nested fragment inside of the GameFragment
+         */
         val viewModelFactory = GameViewModelFactory(dao)
         val viewModel = ViewModelProvider(requireParentFragment(), viewModelFactory)[GameViewModel::class.java]
 
+        //data binding the game screen view with the viewModel to pass data
         binding.gameScreen = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -63,6 +69,10 @@ class GameScreenFragment : Fragment() {
             }
         })
 
+        /*
+        If the user has not entered a name yet and they try and check their answer it will
+        display a toast indicating that they do not have a name
+         */
         viewModel.noName.observe(viewLifecycleOwner, Observer {
             if(it){
                 Toast.makeText(requireContext(), "NO NAME", Toast.LENGTH_SHORT).show()
