@@ -32,7 +32,9 @@ The following extensions are implemented
 
 ## Notes 
 
-* Getting the 
+* Getting the Game Fragments nested fragments under one viewModel (GameViewModel)
+* two way data binding with types other than strings (Booleans, Ints, etc) - Had to use Observable instead of live data
+* Passing args for the score and name of the player to Main Fragment (Had to set default value on the nav not the fragment)
 
 
 ## License 
