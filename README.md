@@ -10,7 +10,7 @@ The following midterm app functionality is completed
 * [-] This allows the user to decrement their entered number by one
 * [+] This alows the user to increment their entered number by one
 * [OK] This allows the user to check their guessed answer 
-* [x] This allows the user to delete a high score
+* [X] This allows the user to delete a high score
 
 The following extensions are implemented 
 
