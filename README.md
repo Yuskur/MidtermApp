@@ -27,7 +27,7 @@ The following extensions are implemented
 
 * Here is a video walkthrough of the Midterm app
 
-//Some video here 
+![MidApp](https://github.com/Yuskur/MidtermApp/assets/123311946/2e74ca59-7363-4e05-bf7a-4e66bcc4c32b)
 
 
 ## Notes 
