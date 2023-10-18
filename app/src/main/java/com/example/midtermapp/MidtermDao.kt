@@ -15,6 +15,6 @@ interface MidtermDao {
     suspend fun delete(score: Score)
     @Query("SELECT * FROM score_data WHERE id = :key")
     fun get(key: Long): LiveData<Score>
-    @Query("SELECT * FROM score_data ORDER BY score ASC")
+    @Query("SELECT * FROM score_data ORDER BY score DESC")
     fun getAll(): LiveData<List<Score>>
 }

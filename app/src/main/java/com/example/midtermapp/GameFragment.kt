@@ -35,6 +35,7 @@ class GameFragment : Fragment() {
 
         //Generates the random number
         viewModel.randomNumber = Random.nextInt(1, 100)
+        Log.d("Random Number", "${viewModel.randomNumber}")
         binding.lifecycleOwner = viewLifecycleOwner
 
         /*
